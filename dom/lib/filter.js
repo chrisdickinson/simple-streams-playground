@@ -5,9 +5,9 @@ function filter(matches) {
     var reads = []
       , checking = false
 
-    return {next: next, end: end}
+    return {read: read, abort: abort}
 
-    function next(produce) {
+    function read(produce) {
       reads.push(produce)
       if(!checking) check()
     }
@@ -20,7 +20,7 @@ function filter(matches) {
 
       while(reads.length) {
         sync = undefined
-        input.next(onread)
+        input.read(onread)
         if(sync === undefined) {
           broke = true
           break
@@ -39,14 +39,14 @@ function filter(matches) {
           checking = false
           reads.shift()(err, data) 
         } else if(broke) {
-          input.next(onread)
+          input.read(onread)
         }
       }
     }
 
-    function end(ready) {
+    function abort(ready) {
       reads.length = 0
-      input.end(ready)
+      input.abort(ready)
     }
   }
 }

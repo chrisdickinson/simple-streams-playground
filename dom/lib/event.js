@@ -11,13 +11,13 @@ function event(name, bubble) {
 
     el.addEventListener(name, listener, bubble)
 
-    return {next: next, end: end}
+    return {read: read, abort: abort}
 
-    function end(ready) {
+    function abort(ready) {
       el.removeEventListener(name, listener, bubble)
     }
 
-    function next(produce) {
+    function read(produce) {
       reads.push(produce)
       check()
     }

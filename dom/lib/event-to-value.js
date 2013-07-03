@@ -1,8 +1,8 @@
 module.exports = function(input) {
-  return {next: next, end: input.end}
+  return {read: read, abort: input.abort}
 
-  function next(produce) {
-    input.next(function(err, data) {
+  function read(produce) {
+    input.read(function(err, data) {
       if(data === undefined) {
         return produce(err)
       }

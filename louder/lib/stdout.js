@@ -4,7 +4,7 @@ function stdout(input) {
   return consume()
 
   function consume() {
-    input.next(function(err, data) {
+    input.read(function(err, data) {
       if(data === undefined) {
         return
       }

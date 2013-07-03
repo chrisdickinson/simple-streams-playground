@@ -2,12 +2,12 @@ module.exports = louder
 
 function louder(input) {
   return {
-    next: next
-  , end: input.end
+    read: read
+  , abort: input.abort
   } 
 
-  function next(produce) {
-    input.next(function(err, data) {
+  function read(produce) {
+    input.read(function(err, data) {
       if(data === undefined) {
         return produce(err)
       }

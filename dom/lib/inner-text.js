@@ -5,11 +5,9 @@ function inner_text(el) {
     iter()
 
     function iter() {
-      stream.next(function(err, data) {
+      stream.read(function(err, data) {
         if(data === undefined) {
-          // is this the appropriate thing
-          // to do?
-          return stream.end(function() {})
+          return
         }
 
         el.textContent = data

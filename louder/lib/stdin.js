@@ -3,9 +3,9 @@ module.exports = stdin
 function stdin() {
   var pending = []
 
-  return {next: next, end: end}
+  return {read: read, abort: abort}
 
-  function next(produce) {
+  function read(produce) {
     pending[pending.length] = produce
     check()     
   }
