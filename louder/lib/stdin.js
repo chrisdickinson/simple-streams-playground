@@ -19,7 +19,7 @@ function stdin() {
     pending.shift()(null, output)
   }
 
-  function end(done) {
+  function abort(done) {
     pending.length = 0
     process.stdin.end()
     console.log('ended')

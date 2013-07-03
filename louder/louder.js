@@ -7,5 +7,5 @@ var stdin = require('./lib/stdin')
 stdout(
   (louder
   (fail(10)
-  (stdin()))))
+  (stdin())))
 )
